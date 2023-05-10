@@ -26,6 +26,6 @@ jobs:
           platformatic_config_path: ./platformatic.service.json
         env:
           PLT_SERVER_LOGGER_LEVEL: info 
-          PORT: 3042 
+          PLT_PORT: 3042
           PLT_SERVER_HOSTNAME: 127.0.0.1 
 
