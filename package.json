@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "platformatic service start --allow-env=PORT"
+    "start": "platformatic service start"
   },
   "devDependencies": {
     "fastify": "^4.17.0",

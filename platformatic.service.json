@@ -2,7 +2,7 @@
   "$schema": "https://platformatic.dev/schemas/v0.23.1/service",
   "server": {
     "hostname": "{PLT_SERVER_HOSTNAME}",
-    "port": "{PORT}",
+    "port": "{PLT_PORT}",
     "logger": {
       "level": "{PLT_SERVER_LOGGER_LEVEL}"
     }
