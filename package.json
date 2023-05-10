@@ -3,9 +3,7 @@
     "start": "platformatic service start --allow-env=PORT"
   },
   "devDependencies": {
-    "fastify": "^4.17.0"
-  },
-  "dependencies": {
+    "fastify": "^4.17.0",
     "platformatic": "^0.23.1"
   },
   "engines": {
