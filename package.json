@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "platformatic service start --allow-env=PORT"
+  },
+  "devDependencies": {
+    "fastify": "^4.17.0"
+  },
+  "dependencies": {
+    "platformatic": "^0.23.1"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=19"
+  }
+}
