@@ -21,7 +21,7 @@ jobs:
         uses: platformatic/onestep@development
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          platformatic_workspace_id: a9619b65-92bc-4ef0-9f0e-5e8823b3d843
+          platformatic_workspace_id: 51341712-edc1-46a0-b056-7771a48176c2
           platformatic_workspace_key: ${{ secrets.PLATFORMATIC_STATIC_WORKSPACE_API_KEY }}
           platformatic_config_path: ./platformatic.service.json
         env:
