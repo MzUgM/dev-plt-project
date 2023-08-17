@@ -22,7 +22,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           platformatic_workspace_id: a9619b65-92bc-4ef0-9f0e-5e8823b3d843
-          platformatic_workspace_key: ${{ secrets.PLT_STATIC_DEV_WORKSPACE_API_KEY }}
+          platformatic_workspace_key: ${{ secrets.PLT_STATIC_PRD_WORKSPACE_API_KEY }}
           platformatic_config_path: ./platformatic.service.json
           post_pr_comment: false
         env:
