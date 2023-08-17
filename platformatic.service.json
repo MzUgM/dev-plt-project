@@ -1,5 +1,5 @@
 {
-  "$schema": "https://platformatic.dev/schemas/v0.23.1/service",
+  "$schema": "https://platformatic.dev/schemas/v0.35.5/service",
   "server": {
     "hostname": "{PLT_SERVER_HOSTNAME}",
     "port": "{PLT_PORT}",
@@ -11,6 +11,12 @@
     "paths": [
       "./plugins",
       "./routes"
+    ]
+  },
+  "watch": {
+    "ignore": [
+      "*.sqlite",
+      "*.sqlite-journal"
     ]
   }
 }

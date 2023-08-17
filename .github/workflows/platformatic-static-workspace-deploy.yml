@@ -8,7 +8,7 @@ on:
       - '**.md'
 
 jobs:
-  build_and_deploy:
+  development:
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -18,14 +18,36 @@ jobs:
       - name: npm install --omit=dev
         run: npm install --omit=dev
       - name: Deploy project
-        uses: platformatic/onestep@development
+        uses: platformatic/onestep@latest
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          platformatic_workspace_id: a9619b65-92bc-4ef0-9f0e-5e8823b3d843
+          platformatic_workspace_key: ${{ secrets.PLT_STATIC_DEV_WORKSPACE_API_KEY }}
+          platformatic_config_path: ./platformatic.service.json
+        env:
+          PLT_SERVER_LOGGER_LEVEL: info
+          PLT_PORT: 3042
+          PLT_SERVER_HOSTNAME: 0.0.0.0
+          deploy_service_host: https://plt-development-deploy-service.fly.dev
+
+  production:
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout application project repository
+        uses: actions/checkout@v3
+      - name: npm install --omit=dev
+        run: npm install --omit=dev
+      - name: Deploy project
+        uses: platformatic/onestep@latest
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           platformatic_workspace_id: 51341712-edc1-46a0-b056-7771a48176c2
-          platformatic_workspace_key: ${{ secrets.PLATFORMATIC_STATIC_WORKSPACE_API_KEY }}
+          platformatic_workspace_key: ${{ secrets.PLT_STATIC_PRD_WORKSPACE_API_KEY }}
           platformatic_config_path: ./platformatic.service.json
         env:
-          PLT_SERVER_LOGGER_LEVEL: info 
+          PLT_SERVER_LOGGER_LEVEL: info
           PLT_PORT: 3042
-          PLT_SERVER_HOSTNAME: 127.0.0.1 
-
+          PLT_SERVER_HOSTNAME: 0.0.0.0
+          deploy_service_host: https://plt-production-deploy-service.fly.dev
