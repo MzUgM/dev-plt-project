@@ -1,15 +1,15 @@
 {
   "scripts": {
-    "start": "platformatic service start"
+    "start": "platformatic start",
+    "test": "node --test test/**"
   },
   "devDependencies": {
-    "fastify": "^4.21.0",
-    "platformatic": "^0.35.5"
-  },
-  "engines": {
-    "node": "^18.8.0 || >=19"
+    "fastify": "^4.24.0"
   },
   "dependencies": {
-    "typescript": "^5.1.6"
+    "platformatic": "^1.4.0"
+  },
+  "engines": {
+    "node": "^18.8.0 || >=20.6.0"
   }
 }

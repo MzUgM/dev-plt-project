@@ -11,20 +11,39 @@ jobs:
       contents: read
       pull-requests: write
     runs-on: ubuntu-latest
+    env:
+     DATABASE_URL: ${{ secrets.DATABASE_URL }}
+     PLT_SERVER_LOGGER_LEVEL: info 
+     PORT: 3001 
+     PLT_SERVER_HOSTNAME: 127.0.0.1 
+     DEPLOY_SERVICE_HOST: https://plt-staging-deploy-service.fly.dev 
+
     steps:
       - name: Checkout application project repository
         uses: actions/checkout@v3
       - name: npm install --omit=dev
         run: npm install --omit=dev
       - name: Deploy project
-        uses: platformatic/onestep@development
+        id: deploy-project
+        uses: platformatic/onestep@latest
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          platformatic_workspace_id: 699abbbf-190a-4218-8a89-1bcd67ef2db1
+          platformatic_workspace_id: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_ID }}
           platformatic_workspace_key: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_API_KEY }}
-          platformatic_config_path: ./platformatic.service.json
-        env:
-          PLT_SERVER_LOGGER_LEVEL: info 
-          PLT_PORT: 3042
-          PLT_SERVER_HOSTNAME: 127.0.0.1 
-
+          platformatic_config_path: ./platformatic.db.json
+    outputs:
+      deployment_id: ${{ steps.deploy-project.outputs.deployment_id }}
+  calculate_risk:
+    permissions:
+      contents: read
+      pull-requests: write
+    needs: build_and_deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Calculate risk
+        uses: platformatic/onestep/actions/calculate-risk@latest
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          platformatic_workspace_id: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_ID }}
+          platformatic_workspace_key: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_API_KEY }}
+          platformatic_deployment_id: ${{ needs.build_and_deploy.outputs.deployment_id }}
