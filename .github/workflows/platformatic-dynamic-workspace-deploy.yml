@@ -12,10 +12,6 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     env:
-     DATABASE_URL: ${{ secrets.DATABASE_URL }}
-     PLT_SERVER_LOGGER_LEVEL: info 
-     PORT: 3001 
-     PLT_SERVER_HOSTNAME: 127.0.0.1 
      DEPLOY_SERVICE_HOST: https://plt-development-deploy-service.fly.dev 
 
     steps:
@@ -30,7 +26,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           platformatic_workspace_id: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_ID }}
           platformatic_workspace_key: ${{ secrets.PLATFORMATIC_DYNAMIC_WORKSPACE_API_KEY }}
-          platformatic_config_path: ./platformatic.db.json
+          platformatic_config_path: ./platformatic.service.json
     outputs:
       deployment_id: ${{ steps.deploy-project.outputs.deployment_id }}
   calculate_risk:
