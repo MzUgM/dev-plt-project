@@ -7,7 +7,7 @@
     "fastify": "^4.24.0"
   },
   "dependencies": {
-    "@platformatic/service": "^1.4.0"
+    "@platformatic/service": "1.25.0"
   },
   "engines": {
     "node": "^18.8.0 || >=20.6.0"
