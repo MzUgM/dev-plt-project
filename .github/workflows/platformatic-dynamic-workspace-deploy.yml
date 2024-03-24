@@ -16,7 +16,7 @@ jobs:
      PLT_SERVER_LOGGER_LEVEL: info 
      PORT: 3001 
      PLT_SERVER_HOSTNAME: 127.0.0.1 
-     DEPLOY_SERVICE_HOST: https://plt-staging-deploy-service.fly.dev 
+     DEPLOY_SERVICE_HOST: https://plt-development-deploy-service.fly.dev 
 
     steps:
       - name: Checkout application project repository
